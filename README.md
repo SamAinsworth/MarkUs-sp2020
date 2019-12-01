@@ -21,7 +21,7 @@ For a single application, you can also define this variable within the execution
 LD_PRELOAD="/homes/sa614/useaftergc/lib/libgc.so /homes/sa614/useaftergc/lib/libgccpp.so" vi README.md
 ```
 
-##Modifying the Allocator
+## Modifying the Allocator
 
 Many of the features of MarkUs are implemented in freeing_list.c and include/private/freeing_list.h. To add or remove features from MarkUs, or reconfigure its memory overhead, alter the values in freeing_list.h, then clean and reinstall from the bdwgc-markus directory:
 
