@@ -12,13 +12,13 @@ The allocator should be configured using the settings given in setup.sh, which s
 To replace malloc for all dynamically linked binaries running within a shell, use 
 
 ```
-export LD_PRELOAD="/homes/sa614/useaftergc/lib/libgc.so /homes/sa614/useaftergc/lib/libgccpp.so"
+export LD_PRELOAD="~/markus-allocator/lib/libgc.so ~/markus-allocator/lib/libgccpp.so"
 ```
 
 For a single application, you can also define this variable within the execution command, e.g.
 
 ```
-LD_PRELOAD="/homes/sa614/useaftergc/lib/libgc.so /homes/sa614/useaftergc/lib/libgccpp.so" vi README.md
+LD_PRELOAD="~/markus-allocator/lib/libgc.so ~/markus-allocator/lib/libgccpp.so" vi README.md
 ```
 
 ## Modifying the Allocator
