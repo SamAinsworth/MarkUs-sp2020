@@ -5,7 +5,7 @@ It is implemented as a modification of the Boehm-Demers-Weiser garbage collector
 
 ## Compiling and Installing the Allocator
 
-The allocator should be configured using the settings given in setup.sh, which should be run from the root of this respository. To change where it is installed, alter "--prefix=~/markus-allocator" to your choice of folder.
+This project depends on automake, autoconf and libtool, which should be installed before proceeding. The allocator should be configured using the settings given in setup.sh, which should be run from the root of this respository. To change where it is installed, alter "--prefix=~/markus-allocator" to your choice of folder.
 
 ## Using the Allocator
 
