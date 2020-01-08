@@ -12,13 +12,13 @@ This project depends on automake, autoconf and libtool, which should be installe
 To replace malloc for all dynamically linked binaries running within a shell, use 
 
 ```
-export LD_PRELOAD="~/markus-allocator/lib/libgc.so ~/markus-allocator/lib/libgccpp.so"
+export LD_PRELOAD="$HOME/markus-allocator/lib/libgc.so $HOME/markus-allocator/lib/libgccpp.so"
 ```
 
 For a single application, you can also define this variable within the execution command, e.g.
 
 ```
-LD_PRELOAD="~/markus-allocator/lib/libgc.so ~/markus-allocator/lib/libgccpp.so" vi README.md
+LD_PRELOAD="$HOME/markus-allocator/lib/libgc.so $HOME/markus-allocator/lib/libgccpp.so" vi README.md
 ```
 
 ## Modifying the Allocator
