@@ -833,8 +833,8 @@ if test "${enable_redirect_malloc}" = yes; then
                   [If defined, redirect free to this function.])
     else
         AC_DEFINE(REDIRECT_MALLOC, GC_malloc)
-        #AC_DEFINE(REDIRECT_FREE, GC_free)
-        #AC_DEFINE(REDIRECT_REALLOC, GC_realloc)
+        AC_DEFINE(REDIRECT_FREE, GC_free)
+        AC_DEFINE(REDIRECT_REALLOC, GC_realloc)
     fi
     AC_DEFINE([GC_USE_DLOPEN_WRAP], 1, [See doc/README.macros.])
 fi
