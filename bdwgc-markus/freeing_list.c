@@ -1146,7 +1146,7 @@ void GC_walk_freeing_link_hblker (void) {
 
     pthread_mutex_lock(&freeing_link_lock);
     
-    printf("freeing link ran");
+    //printf("freeing link ran");
 
    // printf("freed %ld from link, %ld directly, size was %ld, seen %ld, indirect freed %ld, hblk freed %ld, heapsize %ld\n", freed, firstfreed, freeing_link_size, seen, secondfreed, freehblked, GC_heapsize - unmapped);
 
