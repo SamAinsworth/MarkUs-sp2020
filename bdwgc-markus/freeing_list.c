@@ -36,7 +36,7 @@ STATIC struct hblkhdr * flist_tail = NULL;
 STATIC  struct hblkhdr* flist_head_inner = NULL;
 STATIC  struct hblkhdr* flist_tail_inner = NULL;
 
-#define XOR 12345678910
+#define XOR (1ul<<52)
 
 static void* flink_head = (void*)XOR;
 static void* flink_tail = (void*)XOR;
