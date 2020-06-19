@@ -48,6 +48,8 @@
 # include "gc_priv.h"
 #endif
 
+#include "private/freeing_list.h"
+
 EXTERN_C_BEGIN
 
 /* The real declarations of the following is in gc_priv.h, so that      */
@@ -355,9 +357,11 @@ GC_INLINE mse * GC_push_contents_hdr(ptr_t current, mse * mark_stack_top,
                                      (unsigned)GC_gc_no, (void *)base,
                                      (void *)source));
     INCR_MARKS(hhdr);
+if(IS_MY_MAPPED(hhdr)){
     GC_STORE_BACK_PTR(source, base);
     mark_stack_top = GC_push_obj(base, hhdr, mark_stack_top,
                                  mark_stack_limit);
+}
   } while (0);
   return mark_stack_top;
 }

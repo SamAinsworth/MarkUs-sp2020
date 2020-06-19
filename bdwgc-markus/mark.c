@@ -1457,7 +1457,7 @@ GC_API struct GC_ms_entry * GC_CALL GC_mark_and_push(void *obj,
     if ((EXPECT(IS_FORWARDING_ADDR_OR_NIL(hhdr), FALSE)
          && (!GC_all_interior_pointers
              || NULL == (hhdr = GC_find_header((ptr_t)GC_base(obj)))))
-        || EXPECT(HBLK_IS_FREE(hhdr) || !IS_MY_MAPPED(hhdr), FALSE)) {
+        || EXPECT(HBLK_IS_FREE(hhdr) , FALSE)) {
       GC_ADD_TO_BLACK_LIST_NORMAL(obj, (ptr_t)src);
       return mark_stack_ptr;
     }
@@ -1491,7 +1491,7 @@ GC_API struct GC_ms_entry * GC_CALL GC_mark_and_push(void *obj,
         GC_ADD_TO_BLACK_LIST_STACK(p, source);
         return;
     }
-    if (EXPECT(HBLK_IS_FREE(hhdr) || !IS_MY_MAPPED(hhdr), FALSE)) {
+    if (EXPECT(HBLK_IS_FREE(hhdr), FALSE)) {
         GC_ADD_TO_BLACK_LIST_NORMAL(p, source);
         return;
     }

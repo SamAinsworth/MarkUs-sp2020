@@ -75,7 +75,7 @@ GC_INNER hdr *
         /* current points to near the start of the large object */
         if (hhdr -> hb_flags & IGNORE_OFF_PAGE)
             return 0;
-        if (HBLK_IS_FREE(hhdr) || !IS_MY_MAPPED(hhdr)
+        if (HBLK_IS_FREE(hhdr)
             || p - current >= (ptrdiff_t)(hhdr->hb_sz)) {
             GC_ADD_TO_BLACK_LIST_NORMAL(p, source);
             /* Pointer past the end of the block */
@@ -97,7 +97,7 @@ GC_INNER hdr *
       return 0;
     }
   } else {
-    if (HBLK_IS_FREE(hhdr) || !IS_MY_MAPPED(hhdr)) {
+    if (HBLK_IS_FREE(hhdr) ) {
       GC_ADD_TO_BLACK_LIST_NORMAL(p, source);
       return 0;
     } else {
