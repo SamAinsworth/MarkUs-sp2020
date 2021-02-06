@@ -2264,10 +2264,17 @@ ptr_t GC_unix_get_mem(size_t bytes)
     ptr_t result = 0;
 
     if (!sbrk_failed) result = GC_unix_sbrk_get_mem(bytes);
-    if (0 == result) {
+  
+/*HACKY: Something (possibly to do with MarkUs?) causes this MMAPED data to not be marked 
+  by the marking procedure. If you therefore deliberately allocate something bigger than 
+  the system memory available, you can lock in MarkUs to the mmap allocator, causing
+  all future allocations to no longer be use-after-free-safe.
+*/
+/*if (0 == result) {
         sbrk_failed = TRUE;
         result = GC_unix_mmap_get_mem(bytes);
     }
+*/
     if (0 == result) {
         /* Try sbrk again, in case sbrk memory became available.        */
         result = GC_unix_sbrk_get_mem(bytes);
