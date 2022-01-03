@@ -244,7 +244,9 @@ void GC_CALL GC_safe_free(void * p) {
 
 #if UNMAP_PAGES
 if(UNMAP_COST(hhdr->hb_sz)) { //arbitrarily set, small values break wrf for some reason!
+        LOCK();
         potential_unmap(hhdr,h);
+        UNLOCK();
 
            // pthread_mutex_lock(&unmap_lock);
             //unmapped_since_gc += HBLKSIZE * OBJ_SZ_TO_BLOCKS(sz);
