@@ -244,9 +244,11 @@ void GC_CALL GC_safe_free(void * p) {
 
 #if UNMAP_PAGES
 if(UNMAP_COST(hhdr->hb_sz)) { //arbitrarily set, small values break wrf for some reason!
+        if(!GC_collecting) {
         LOCK();
         potential_unmap(hhdr,h);
         UNLOCK();
+        }
 
            // pthread_mutex_lock(&unmap_lock);
             //unmapped_since_gc += HBLKSIZE * OBJ_SZ_TO_BLOCKS(sz);
@@ -510,7 +512,12 @@ void GC_walk_freeing_list (void) {
 
             if (mark_bit_from_hdr(current, 0)) {
                 found = 1;
-                if(IS_MY_MAPPED(current)) failed_frees += sz;
+                if(IS_MY_MAPPED(current)) {
+                if(UNMAP_COST(sz))
+                	potential_unmap(current,current->hb_block);
+                else failed_frees += sz;
+
+                }
                 //printf("marked %p at %ld\n",current,bit_no);
             }
             
